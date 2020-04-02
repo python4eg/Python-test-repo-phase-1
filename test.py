@@ -72,6 +72,8 @@ print(x * y)
 
 print(x % y)
 
+print(x // y)
+
 print(f'Sum: {x} + {y} = {x + y}')
 
 print(f'Ext: {x} - {y} = {x - y}')
@@ -81,6 +83,8 @@ print(f'Div: {x} / {y} = {x / y}')
 print(f'Mult: {x} * {y} = {x * y}')
 
 print(f'Modulo: {x} mod {y} = {x % y}')
+
+print(f'Integer division: {x} // {y} = {x // y}')
 
 print(f'Text: {paragraph_text_single_quotes}')
 
