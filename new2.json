@@ -4,7 +4,8 @@
         "description": "Plus",
         "function": "sum",
         "\u0445\u0430\u0440\u0430\u043a\u0442\u0435\u0440": "\u041d\u043e\u0440\u0434\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
-        "arguments_count": 2
+        "arguments_count": 2,
+        "first_name": "NEW"
     },
     {
         "operation": "-",
@@ -12,5 +13,19 @@
         "description": "sub",
         "function": "lambda a, b: a - b",
         "arguments_count": 2
+    },
+    {
+        "first_name": "asd",
+        "last_name": "asd",
+        "full_name": "asd asd",
+        "phone": "asd",
+        "city": "asd"
+    },
+    {
+        "first_name": "aaaa",
+        "last_name": "aaa",
+        "full_name": "aaaa aaa",
+        "phone": "aa",
+        "city": "aa"
     }
 ]

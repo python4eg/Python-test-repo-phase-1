@@ -32,8 +32,14 @@ Algorithm:
    1. ...
 """
 import json
+import sys
 
-json_file = open('new.json')
+print(sys.argv)
+if len(sys.argv) < 2:
+    print('Please specify json file name')
+    exit()
+filename = sys.argv[1]
+json_file = open(filename)
 try:
     phonebook = json.load(json_file)
 except json.decoder.JSONDecodeError:
@@ -57,7 +63,7 @@ try:
             full_name  = first_name + ' ' + last_name
             phone = input('Print phone: ')
             city = input('Print city: ')
-            new_entry = dict_pattern
+            new_entry = dict_pattern.copy()
             new_entry['first_name'] = first_name
             new_entry['last_name'] = last_name
             new_entry['full_name'] = full_name
@@ -100,5 +106,5 @@ except Exception as e:
     print('Unexpected error.')
     print(e)
 finally:
-    with open('new.json', 'w') as json_file:
+    with open(filename, 'w') as json_file:
         json.dump(phonebook, json_file, indent=4)
