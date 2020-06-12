@@ -34,7 +34,7 @@ own_any(['', [], {}, 0, '123', ''])
 
 def read_file():
     index = 10
-    with open('test') as f:
+    with open('test.json') as f:
         for i in f:
             print('First step')
             index += 1
