@@ -36,3 +36,18 @@ test_phone_is_int_success()
 
 def add(x:int, y: int) -> int:
     return x + y
+
+
+def validate(name):
+    if name.isalpha():
+        return True
+    return False
+
+def validate2(name):
+    return name.isalpha()
+
+def validate_and_convert_or_none(name):
+    if validate(name):
+        return name.title()
+    return None
+
