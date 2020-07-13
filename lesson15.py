@@ -30,7 +30,9 @@ def own_any(iterable):
         if item: # if item True, If item >= 1, If len(item) >=1, if item is not None ...
             return
 
+
 own_any(['', [], {}, 0, '123', ''])
+
 
 def read_file():
     index = 10
@@ -41,6 +43,7 @@ def read_file():
             print(index)
             yield i
             print('second step')
+
 
 file_data = read_file()
 print(file_data)
