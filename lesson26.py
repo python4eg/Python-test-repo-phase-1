@@ -42,10 +42,10 @@ with open('python.png', 'wb') as f:
 resource = requests.get('https://httpbin.org/get', params={'things': 2})
 print(resource.text)
 
-
-resource = requests.get('https://api.github.com/search/repositories', params={'q': 'anime:javascript'})
-print(type(resource.json()))
-for item in resource.json()['items']:
-    print(item['owner'])
-    print(item['name'])
-    print(item['html_url'])
+while True:
+    resource = requests.get('https://api.github.com/search/repositories', params={'q': 'anime:javascript'})
+    print(resource.json())
+    for item in resource.json()['items']:
+        print(item['owner'])
+        print(item['name'])
+        print(item['html_url'])
