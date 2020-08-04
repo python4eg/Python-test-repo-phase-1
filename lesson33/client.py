@@ -22,7 +22,12 @@ class Client(asyncio.Protocol):
         self.loop.stop()
 
     def print_data(self, json_data):
-        message = f'[{json_data["time"]}] {json_data["sender"]}: {json_data["message"]}'
+        message = ''
+        if json_data.get('time'):
+            message += f'[{json_data.get("time")}] '
+        if json_data.get('sender'):
+            message += f'{json_data["sender"]}: '
+        message += json_data['message']
         if self.output_callback is None:
             stdout.write(message)
         else:

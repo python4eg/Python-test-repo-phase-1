@@ -1,6 +1,6 @@
 import asyncio
 import sys
-from functools import partial
+
 from random import random
 
 from PyQt5.QtWidgets import (QApplication,
@@ -12,6 +12,7 @@ from PyQt5.QtWidgets import (QApplication,
                              QLineEdit,
                              QTextEdit,
                              QLabel)
+from PyQt5.QtGui import QTextCursor
 from quamash import QEventLoop
 
 from client import Client
@@ -32,15 +33,19 @@ class MyWindow(QMainWindow):
     def output(self, message):
         self.chatArea.insertPlainText(message)
         self.chatArea.insertPlainText('\n')
+        self.chatArea.moveCursor(QTextCursor.End)
 
     def __init_widgets(self):
         self.setWindowTitle('Чат')
-        self.setGeometry(0, 0, 500, 200)
+        self.setGeometry(0, 0, 500, 500)
 
         self.widget = QWidget()
 
         self.firstLabel = QLabel(f'Username: {self.client.user}')
         self.chatArea = QTextEdit('', self)
+        self.chatArea.setReadOnly(True)
+        self.chatArea.setMouseTracking(True)
+        self.chatArea.textSelected = False
 
         self.mainLayout = QVBoxLayout()
         self.mainEditLayout = QHBoxLayout()

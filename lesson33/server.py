@@ -15,7 +15,11 @@ class EchoServerProtocol(asyncio.Protocol):
         print(f'Connection from {self.peername!r}')
 
         self.transport = transport
-        self.transport.write(json.dumps(self.messages).encode())
+        messages = [{'message': 'Welcome to out chat!'}]
+        messages.extend(self.messages[-5:])
+        if self.messages:
+            messages.append({'message': '_'*10 + f'Last {len(self.messages[-5:])} messages' + '_'*10})
+        self.transport.write(json.dumps(messages).encode())
         self.transports.append(self.transport)
 
     def data_received(self, data):
