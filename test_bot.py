@@ -1,5 +1,6 @@
 import logging
 
+import requests
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -10,7 +11,12 @@ def echo(update, context):
     update.message.reply_text(update.message.text)
 
 def start(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="https://rozetka.com.ua/151663121/p151663121/")
+    task_list = requests.get('http://localhost:5000/todos')
+    tasks = task_list.json()
+    t = "\n".join([i['task'] for i in tasks["tasks"]])
+    message = f'Список справ на сьогодні:\n{t}'
+
+    context.bot.send_message(chat_id=update.effective_chat.id, text=message)
 
 def caps(update, context):
     text_caps = ' '.join(context.args).upper()
